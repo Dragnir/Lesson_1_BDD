@@ -4,9 +4,14 @@
 	I want be able to see error message after emter incorrect password
 
 @smoke
-Scenario: Enter incorrect password should be shows error message
+Scenario Outline: Enter incorrect password should be shows error message
 	Given I open official mail ru site
 	And Click on Login button
 	When I set User Navme 'vadim.kuryan.vka' start add password
-	And Type 'IncorrectPassword' and click on login
+	And Type '<password>' and click on login
 	Then Page shows error message that 'Password is Incorrect'
+
+	Examples: 
+	| password         |
+	| incorrectPasword |
+	| qwerty12345      |

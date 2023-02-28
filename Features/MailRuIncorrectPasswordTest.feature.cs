@@ -77,11 +77,19 @@ namespace Lesson_11_BDD.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Enter incorrect password should be shows error message")]
         [NUnit.Framework.CategoryAttribute("smoke")]
-        public void EnterIncorrectPasswordShouldBeShowsErrorMessage()
+        [NUnit.Framework.TestCaseAttribute("incorrectPasword", null)]
+        [NUnit.Framework.TestCaseAttribute("qwerty12345", null)]
+        public void EnterIncorrectPasswordShouldBeShowsErrorMessage(string password, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter incorrect password should be shows error message", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
@@ -103,7 +111,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I set User Navme \'vadim.kuryan.vka\' start add password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.And("Type \'IncorrectPassword\' and click on login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Type \'{0}\' and click on login", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
  testRunner.Then("Page shows error message that \'Password is Incorrect\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

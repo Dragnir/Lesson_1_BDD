@@ -1,4 +1,5 @@
 ﻿using Lesson_11_BDD.PageObjects;
+using Lesson_11_BDD.WebDriver;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -10,10 +11,19 @@ namespace Lesson_11_BDD.Steps
         private readonly ScenarioContext context;
         private HomePage homePage;
         private LoginPage loginPage;
+        protected static Browser Browser;
 
         public MailRuSteps(ScenarioContext scenarioContext)
         {
             context = scenarioContext;
+        }
+
+        [BeforeScenario("smoke") ]
+        public static void BeforeTestRun()
+        {
+            Browser = Browser.Instance;
+            Browser.WindowMaximize();
+            Browser.NavigateTo(Configuration.StartUrl);
         }
 
         [Given(@"I open official mail ru site")]
@@ -25,8 +35,8 @@ namespace Lesson_11_BDD.Steps
         [Given(@"Click on Login button")]
         public void ClickOnLoginButton()
         {
-            loginPage = new LoginPage();
             homePage.GoToLogin();
+            loginPage = new LoginPage();
         }
 
         [When(@"I set User Navme '(.*)' start add password")]
@@ -46,6 +56,12 @@ namespace Lesson_11_BDD.Steps
         public void PageShowsErrorMessage(string errorMessage)
         {
             Assert.IsTrue(loginPage.errorMesage.WebElementExist(), $"Error message {errorMessage} is not appear");
+        }
+
+        [AfterScenario]
+        public static void AfterTestRun()
+        {
+            Browser.Quit();
         }
 
     }
