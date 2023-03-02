@@ -9,17 +9,23 @@ namespace Lesson_11_BDD.APITests
 {
     public class HTTPTest
     {
+        public HttpWebResponse responce;
+
+        [SetUp]
+        public void SetUpTest()
+        {
+            responce = MakeRequest();
+        }
+        
         [Test]
         public void StatusCodeTest()
         {
-            HttpWebResponse responce = MakeRequest();
             Assert.AreEqual("OK", responce.StatusCode.ToString());
         }
 
         [Test]
         public void HeaderTest()
         {
-            HttpWebResponse responce = MakeRequest();
             Assert.AreEqual("application/json; charset=utf-8", responce.Headers["content-type"]);
         }
 
@@ -27,7 +33,6 @@ namespace Lesson_11_BDD.APITests
         public void BodyTest()
         {
             string responceBody = String.Empty;
-            HttpWebResponse responce = MakeRequest();
 
             using (Stream s = responce.GetResponseStream())
             {
@@ -36,8 +41,8 @@ namespace Lesson_11_BDD.APITests
                     responceBody = r.ReadToEnd();
                 }
             }
-            Root jsonResult = JsonConvert.DeserializeObject<Root>(responceBody);
-            Assert.AreEqual(10, jsonResult.MyArray.Count);
+            var users = JsonConvert.DeserializeObject<List<User>>(responceBody);
+            Assert.AreEqual(10, users.Count);
         }
 
         public static HttpWebResponse MakeRequest()

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Lesson_11_BDD.APITests
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Address
     {
         public string street { get; set; }
@@ -25,7 +23,7 @@ namespace Lesson_11_BDD.APITests
         public string lng { get; set; }
     }
 
-    public class MyArray
+    public class User
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -35,10 +33,5 @@ namespace Lesson_11_BDD.APITests
         public string phone { get; set; }
         public string website { get; set; }
         public Company company { get; set; }
-    }
-
-    public class Root
-    {
-        public List<MyArray> MyArray { get; set; }
     }
 }
