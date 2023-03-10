@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Lesson_11_BDD.Utils;
+using OpenQA.Selenium;
 
 namespace Lesson_11_BDD.PageObjects
 {
@@ -13,6 +14,7 @@ namespace Lesson_11_BDD.PageObjects
             titleLocator = TitleLocator;
             this.title = titleForm = title;
             AssertIsOpen();
+            Logger.InitLogger();
         }
 
         public void AssertIsOpen()

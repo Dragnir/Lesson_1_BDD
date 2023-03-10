@@ -1,7 +1,6 @@
-﻿using Lesson_11_BDD.WebDriver;
-using log4net.Config;
+﻿using Lesson_11_BDD.Utils;
+using Lesson_11_BDD.WebDriver;
 using NUnit.Framework;
-using System.IO;
 
 namespace Lesson_11_BDD.Tests
 {
@@ -12,7 +11,7 @@ namespace Lesson_11_BDD.Tests
         [SetUp]
         public virtual void InitTest()
         {
-            XmlConfigurator.Configure(new FileInfo("Log.config"));
+            Logger.InitLogger();
 
             Browser = Browser.Instance;
             Browser.WindowMaximize();

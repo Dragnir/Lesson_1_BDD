@@ -1,4 +1,5 @@
 ﻿using Lesson_11_BDD.BusinesObject;
+using Lesson_11_BDD.Utils;
 using OpenQA.Selenium;
 
 namespace Lesson_11_BDD.PageObjects
@@ -19,6 +20,7 @@ namespace Lesson_11_BDD.PageObjects
         {
             loginField.JsHighlightElement();
             loginField.SendKeys(loginName);
+            Logger.Log.Debug($"Set login name {loginName}");
         }
 
         public void SetPassword(string password)
@@ -26,6 +28,7 @@ namespace Lesson_11_BDD.PageObjects
             setPassword.Click();
             passwordField.WaitForIsVisible();
             passwordField.SendKeys(password);
+            Logger.Log.Debug($"Set password {password}");
         }
 
         public void LogInAsUser(User user)
@@ -34,12 +37,14 @@ namespace Lesson_11_BDD.PageObjects
             setPassword.Click();
             passwordField.WaitForIsVisible();
             passwordField.SendKeys(user.DataUser[1]);
+            Logger.Log.Debug($"Login as a user {user.DataUser[1]}");
         }
 
         public void SignIn()
         {
             signIn.JsHighlightElement();
             signIn.Click();
+            Logger.Log.Debug("Sign in finished");
         }
     }
 }

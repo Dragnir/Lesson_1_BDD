@@ -2,7 +2,8 @@
 using Lesson_11_BDD.BusinesObject;
 using NUnit.Framework;
 using Lesson_11_BDD.Utils;
-using log4net;
+
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "App.config")]
 
 namespace Lesson_11_BDD.Tests
 {
@@ -13,14 +14,11 @@ namespace Lesson_11_BDD.Tests
         private MailPage mailPage;
         private readonly User user = new User("vadim.kuryan.vka", "Vka_6463296");
         private readonly Mail mail = new Mail("dragnir@tut.by", "TestSubject", "TestBody");
-        protected ILog Log
-        {
-            get { return LogManager.GetLogger(this.GetType()); }
-        }
 
         [Test]
         public void SendDraftedMailTest()
         {
+            Logger.Log.Info("This is SendDraftedMailTest Test");
             homePage = new HomePage();
             homePage.GoToLogin();
             loginPage = new LoginPage();
@@ -41,7 +39,7 @@ namespace Lesson_11_BDD.Tests
         [Test]
         public void WrongPasswordTest()
         {
-            Log.Info("This is WrongPasswordTest Test");
+            Logger.Log.Info("This is WrongPasswordTest Test");
             homePage = new HomePage();
             homePage.GoToLogin();
             loginPage = new LoginPage();
@@ -54,6 +52,7 @@ namespace Lesson_11_BDD.Tests
         [Test]
         public void SendMailTest()
         {
+            Logger.Log.Info("This is SendMailTest Test");
             homePage = new HomePage();
             homePage.GoToLogin();
             loginPage = new LoginPage();

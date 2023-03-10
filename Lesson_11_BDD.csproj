@@ -33,19 +33,4 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Log.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Log.config</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Log.config">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Log.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
 </Project>

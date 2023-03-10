@@ -1,4 +1,5 @@
 ﻿using Lesson_11_BDD.BusinesObject;
+using Lesson_11_BDD.Utils;
 using OpenQA.Selenium;
 
 namespace Lesson_11_BDD.PageObjects
@@ -36,6 +37,7 @@ namespace Lesson_11_BDD.PageObjects
             this.subject.WebElementExist();
             this.subject.SendKeys(mail.DataMail[1]);
             this.body.SendKeys(mail.DataMail[2]);
+            Logger.Log.Debug($"Mail was created with subjec {mail.DataMail[1]} and body {mail.DataMail[2]}");
         }
 
         public void SaveMailAsDraft()
@@ -44,12 +46,14 @@ namespace Lesson_11_BDD.PageObjects
             sendToday.WebElementClickable();
             sendToday.JsClick();
             closeMail.Click();
+            Logger.Log.Debug("Mail saved as a draft");
         }
 
         public void GoToDraftFolder()
         {
             draftFolder.Click();
             refresh.Click();
+            Logger.Log.Debug("Go to Draft folder");
         }
     }
 }
