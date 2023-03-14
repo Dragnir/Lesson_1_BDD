@@ -42,6 +42,8 @@ namespace Lesson_11_BDD.PageObjects
             catch(Exception ex)
             {
                 ExceptionHandler.Instance.WriteExceptionLog(ex);
+                ScreenshotMaker.TakeBrowserScreenshot();
+                Logger.Log.Error(ex);
             }
             return element;
         }

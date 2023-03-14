@@ -21,6 +21,10 @@ namespace Lesson_11_BDD.Tests
         [TearDown]
         public virtual void CleanTest()
         {
+            if (TestContext.CurrentContext.Result.PassCount == 0)
+            {
+                ScreenshotMaker.TakeBrowserScreenshot();
+            }
             Browser.Quit();
         }
     }

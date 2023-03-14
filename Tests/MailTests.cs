@@ -32,6 +32,7 @@ namespace Lesson_11_BDD.Tests
             mailPage.dratedMail.Click();
             Assert.IsTrue(mailPage.savedMail.WebElementExist());
             mailPage.sendMail.Click();
+            Logger.Log.Debug("Send email");
             mailPage.sendFolder.Click();
             Assert.IsTrue(mailPage.savedMail.WebElementExist());
         }
@@ -61,6 +62,7 @@ namespace Lesson_11_BDD.Tests
             mailPage = new MailPage();
             mailPage.WriteNewMail(mail);
             mailPage.sendMail.ActionClick();
+            Logger.Log.Debug("Send email");
             mailPage.sendFolder.ActionClick();
             Assert.IsTrue(mailPage.savedMail.WebElementExist());
         }
