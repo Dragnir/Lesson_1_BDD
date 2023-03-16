@@ -24,6 +24,7 @@ namespace Lesson_11_BDD.Tests
             if (TestContext.CurrentContext.Result.PassCount == 0)
             {
                 ScreenshotMaker.TakeBrowserScreenshot();
+                Logger.Log.Error("Test failed. Please see snapshot");
             }
             Browser.Quit();
         }
